@@ -42,7 +42,7 @@ except:
     except:
         PILImage = None
 
-from six import reraise, StringIO, string_types
+from six import reraise, BytesIO, StringIO, string_types
 
 log = logging.getLogger("xhtml2pdf")
 
@@ -225,7 +225,7 @@ class PmlPageTemplate(PageTemplate):
                 if self.pisaBackground.mimetype.startswith("image/"):
 
                     try:
-                        img = PmlImageReader(StringIO(self.pisaBackground.getData()))
+                        img = PmlImageReader(BytesIO(self.pisaBackground.getData()))
                         iw, ih = img.getSize()
                         pw, ph = canvas._pagesize
 
